@@ -26,6 +26,14 @@ CMITMCD属性
 3. 09:业务类别
 4. STS:任务状态，表中没有数据
 5. REQLVL：任务等级
+6. SMPMNCOND 样品保存条件
+7. SMPPROTYP 样品处理方式
+8. RECTYPE 报告发送方式
+9. SMPQTYUNT 计量单位
+
+主检部门下拉框 在表RLCDLAB中
+主检人下拉框  在表RLCDUSER中
+样品模块下拉框 在表RLCDTPLN中
 
 ##RLCDCUST：委托单位表
 
@@ -320,5 +328,34 @@ CREATE TABLE ANLM.RLTSRDOC
   FSIZ        NUMBER(10),文件大小
   CONTEXT     BLOB,文件内容
   SMPINFONUM  VARCHAR2(20 BYTE)
+)
+```
+##第一级部门  在表RLCDDIVI中
+```
+
+CREATE TABLE ANLM.RLCDDIVI
+(
+  CODE     VARCHAR2(10 BYTE)                    NOT NULL,
+  DIVINM   VARCHAR2(30 BYTE),部门名称
+  DIVIENM  VARCHAR2(100 BYTE)部门名称（英文）
+)
+```
+
+##第二级部门 RLCDDEPT
+```
+
+CREATE TABLE ANLM.RLCDDEPT
+(
+  CODE       VARCHAR2(10 BYTE)                  NOT NULL,
+  DEPTNM     VARCHAR2(30 BYTE),
+  DEPTENM    VARCHAR2(100 BYTE),
+  ZIP1       VARCHAR2(3 BYTE),
+  ZIP2       VARCHAR2(3 BYTE),
+  ADDR1      VARCHAR2(50 BYTE),
+  ADDR2      VARCHAR2(50 BYTE),
+  TEL        VARCHAR2(50 BYTE),
+  TAG        VARCHAR2(10 BYTE),
+  DIVICD     VARCHAR2(10 BYTE),
+  ORG_ORDER  NUMBER(3)
 )
 ```
