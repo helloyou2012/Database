@@ -1,4 +1,4 @@
-#数据库表结构2
+#数据库表结构
 
 
 ##RLCDCMCD：所有的列表数据
@@ -75,24 +75,24 @@ CREATE TABLE ANLM.RLCDCUST
 ```
 CREATE TABLE ANLM.RLTSREQ
 (
-  REQNUM             VARCHAR2(13 BYTE),业务编号
-  TESTCLSNUM         NUMBER(4),样品模板
-  LABNUM             NUMBER(2),主检部门
-  IOFLG              NUMBER(2),检验类别2
-  REQDT              DATE,受理日期
-  REQER              VARCHAR2(50 BYTE)          NOT NULL,
+  REQNUM             VARCHAR2(13 BYTE),业务（任务）编号！
+  TESTCLSNUM         NUMBER(4),样品模板！
+  LABNUM             NUMBER(2),主检部门！
+  IOFLG              NUMBER(2),业务类别！
+  REQDT              DATE,受理日期！
+  REQER              VARCHAR2(50 BYTE),委托单位！
   REQERID            VARCHAR2(20 BYTE),
   REQRSN             VARCHAR2(2000 BYTE),检验依据
   COARECTYP          NUMBER(5),报告发送方式
   UNCTYN             NUMBER(1),
-  TTL                VARCHAR2(200 BYTE),任务名称
+  TTL                VARCHAR2(200 BYTE),任务名称！
   CMT                VARCHAR2(1000 BYTE),产品性状描述
   ZIP                VARCHAR2(10 BYTE),
   ZIP2               VARCHAR2(10 BYTE),
   PADR               VARCHAR2(100 BYTE),
   PADR2              VARCHAR2(100 BYTE),
   TEL                VARCHAR2(20 BYTE),
-  STS                NUMBER(3),任务状态
+  STS                NUMBER(3),任务状态！
   TOTSUM             NUMBER(8),核价（根据登录个数计算总价）
   TESTCLSNM          VARCHAR2(50 BYTE),
   REQDEPTNM          VARCHAR2(50 BYTE),接收部门
@@ -119,7 +119,7 @@ CREATE TABLE ANLM.RLTSREQ
   ROFFICE            VARCHAR2(20 BYTE),
   CEONM              VARCHAR2(10 BYTE),
   RMGRNM             VARCHAR2(50 BYTE),
-  WEBFLG             NUMBER(3),
+  WEBFLG             NUMBER(3),检验类别！
   BIZNO              VARCHAR2(20 BYTE),
   CUSTDIV            VARCHAR2(10 BYTE),
   CONDT              DATE,
