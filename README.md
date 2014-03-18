@@ -43,7 +43,7 @@ CREATE TABLE ANLM.RLCDCUST
 (
   REQRCD    VARCHAR2(20 BYTE)                   NOT NULL,
   REQER     VARCHAR2(50 BYTE),委托单位名称
-  CUSTDIV   NUMBER(5)                           NOT NULL,
+  CUSTDIV   NUMBER(5),客户类别（委托单位类别）
   ZIP       VARCHAR2(10 BYTE),邮编
   ZIP2      VARCHAR2(10 BYTE),
   PADR      VARCHAR2(200 BYTE),地址
