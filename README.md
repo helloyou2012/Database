@@ -17,16 +17,16 @@
 ```
 CREATE TABLE ANLM.RLCDCMCD
 (
-  CMITMCD  VARCHAR2(10 BYTE)                    NOT NULL,
+  CMITMCD  VARCHAR2(10 BYTE)编码ID                    NOT NULL,
   CLSCD    NUMBER(5),
-  CMITMNM  VARCHAR2(20 BYTE)                    NOT NULL,
-  CLSNM    VARCHAR2(50 BYTE)                    NOT NULL,
-  DSC      VARCHAR2(50 BYTE),
-  CLSENM   VARCHAR2(40 BYTE),
-  ORD      NUMBER(5)                            DEFAULT 0,
-  MNGITM1  VARCHAR2(50 BYTE),
-  MNGITM2  VARCHAR2(50 BYTE),
-  MNGITM3  VARCHAR2(50 BYTE)
+  CMITMNM  VARCHAR2(20 BYTE)编码名称                  NOT NULL,
+  CLSNM    VARCHAR2(50 BYTE)编码细项                     NOT NULL,
+  DSC      VARCHAR2(50 BYTE),备注
+  CLSENM   VARCHAR2(40 BYTE),编码英文名
+  ORD      NUMBER(5)排序                            DEFAULT 0,
+  MNGITM1  VARCHAR2(50 BYTE),编码细项1
+  MNGITM2  VARCHAR2(50 BYTE),编码细项2
+  MNGITM3  VARCHAR2(50 BYTE)编码细项3
 )
 ```
 
@@ -340,6 +340,7 @@ CREATE TABLE ANLM.RLTSRDOC
   CONTEXT     BLOB,文件内容
   SMPINFONUM  VARCHAR2(20 BYTE)
 )
+
 ```
 ##第一级部门  在表RLCDDIVI中
 ```
@@ -370,6 +371,20 @@ CREATE TABLE ANLM.RLCDDEPT
   ORG_ORDER  NUMBER(3)
 )
 ```
+##RLCDLAB : 实验室分组
+
+```
+CREATE TABLE ANLM.RLCDLAB
+(
+  LABNUM  NUMBER(2)                             NOT NULL,
+  LAB     VARCHAR2(30 BYTE),分析班组
+  DSC     VARCHAR2(50 BYTE),
+  ACTYN   NUMBER(1)激活                             NOT NULL,
+  DTPCD   VARCHAR2(10 BYTE),部门名称
+  DTPNM   VARCHAR2(50 BYTE),
+  FLAG    VARCHAR2(1 BYTE)                      DEFAULT 'N'
+)
+```
 
 ##用户管理  RLCDUSER
 ```
@@ -392,5 +407,52 @@ CREATE TABLE ANLM.RLCDUSR
   PWD      VARCHAR2(100 BYTE),
   EMAIL    VARCHAR2(50 BYTE),
   PCS      VARCHAR2(20 BYTE)
+)
+```
+
+##审核组管理
+{
+##  RLATBIZ
+```
+CREATE TABLE ANLM.RLATBIZ
+(
+  BIZCD   NUMBER(4)                             NOT NULL,
+  LABNUM  NUMBER(4),
+  RPTFLG  VARCHAR2(1 BYTE),
+  BIZNM   VARCHAR2(20 BYTE),批准证书
+  STEP    NUMBER(2),
+  USRID   VARCHAR2(20 BYTE),
+  GRPNM   VARCHAR2(20 BYTE),
+  FLG     NUMBER(1),
+  DPTCD   VARCHAR2(10 BYTE),
+  USRNM   VARCHAR2(10 BYTE),
+  DSC     VARCHAR2(100 BYTE)
+)
+```
+
+## SC_USER_ROLE
+```
+CREATE TABLE ANLM.SC_USER_ROLE
+(
+  SC_BU_CODE  VARCHAR2(20 BYTE)                 NOT NULL,
+  EMPNO       VARCHAR2(20 BYTE)批准人                 NOT NULL,
+  SYS_ID      VARCHAR2(10 BYTE)                 NOT NULL,
+  ROLE_ID     VARCHAR2(20 BYTE)                 NOT NULL,
+  CUSER       VARCHAR2(20 BYTE)                 DEFAULT 'NONE',
+  CDATE       DATE                              DEFAULT SYSDATE,
+  UUSER       VARCHAR2(20 BYTE)                 DEFAULT 'NONE',
+  UDATE       DATE                              DEFAULT SYSDATE
+)
+```
+
+}
+
+##  RLCDHOLIDAY   节假日表
+```
+CREATE TABLE ANLM.RLCDHOLIDAY
+(
+  HOLIDT     DATE 日期                              NOT NULL,
+  HOLIDTCMT  VARCHAR2(250 BYTE)内容                 NOT NULL,
+  REPEATYN   CHAR(1 BYTE)重复                      DEFAULT 'N'                   NOT NULL
 )
 ```
